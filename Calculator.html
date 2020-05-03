@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calculator by Umesh</title>
+    <style type="text/css">
+    * {
+        box-sizing: border-box;
+        clear: both;
+    }
+
+    h1 {
+        font-size: 60px;
+        text-align: center;
+        color: #eee;
+        text-shadow: -2px 0px black, 0px 1px black, 1px 0px, 0px -2px black, -2px 2px 15px black;
+        transition-duration: 0.5s;
+        /*text-shadow: -2px 2px  15px black;*/
+
+    }
+
+    h1:hover {
+        text-shadow: -2px 0px black, 0px 1px black, 1px 0px, 0px -2px black, -2px 2px 15px black, 4px 4px 15px red;
+    }
+
+
+    table {
+        width: 100%;
+        height: 300px;
+
+    }
+
+    #inputField {
+        border-radius: 5px;
+        border: 1px solid #999;
+        width: 100%;
+        height: 40px;
+        text-align: left;
+        color: #ed6d71;
+        font-size: 20px;
+        padding: 5px 15px;
+        letter-spacing: 3px;
+        box-shadow: 5px 5px 15px #999;
+        transition: transform 2s;
+    }
+    #inputField:hover{
+    	box-shadow: 1px 1px 5px #67ebf5, -1px -1px 5px #67ebf5, 5px 5px 15px #999;
+    	/*width:110%;
+    	height:80px;*/
+    	transform: scale(1.2,1.3);
+    }
+
+    button {
+        padding: 5px;
+        text-align: center;
+        width: 100%;
+        background-color: #c8f6f7;
+        box-shadow: 2px 2px 5px #999, 5px 5px 15px #f0adec;
+        font-size: 25px;
+        text-decoration: none;
+        border: 1px solid #777;
+        border-radius: 8px 60px;
+        font-style: italic;
+        font-weight: bold;
+        transition-duration: 0.8s;
+        cursor: pointer;
+        transition: transform 1s;
+    }
+
+    button:hover {
+        background-color: rgba(0, 0, 240, 0.3);
+        box-shadow: 5px 5px 15px rgba(135, 0, 40, .2);
+        transform: scale(1.2,1.2);
+    }
+
+
+    td {
+        padding: 0px 20px;
+    }
+
+    tr {
+        margin-top: 100px;
+
+    }
+
+    #mainDiv {
+        margin-top: 30px;
+        width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    </style>
+</head>
+
+<body>
+    <H1> Simple Calculator</H1>
+    <div id="mainDiv">
+        <table>
+            <tr>
+                <input type="text" readonly id="inputField" />
+            </tr>
+            <tr>
+                <td><button onclick="takeInput(7)">7</button></td>
+                <td><button onclick="takeInput(8)">8</button></td>
+                <td><button onclick="takeInput(9)">9</button></td>
+                <td><button onclick="takeInput('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="takeInput(6)">6</button></td>
+                <td><button onclick="takeInput(5)">5</button></td>
+                <td><button onclick="takeInput(4)">4</button></td>
+                <td><button onclick="takeInput('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="takeInput(1)">1</button></td>
+                <td><button onclick="takeInput(2)">2</button></td>
+                <td><button onclick="takeInput(3)">3</button></td>
+                <td><button onclick="takeInput('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="clearData()">C</button></td>
+                <td><button onclick="takeInput(0)">0</button></td>
+                <td><button onclick="calculate()">=</button></td>
+                <td><button onclick="takeInput('/')">/</button></td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+
+    var operator = true;
+
+    function takeInput(s) {
+        var i = document.getElementById('inputField').value;
+        if (s == "+" || s == "-" || s == "*" || s == "/") {
+            if (!i == "" && operator == true)
+                operator = false;
+            else {
+                s = "";
+            }
+        } else {
+            operator = true;
+        }
+        if (i == "") {
+            inputField.value = "" + s;
+        } else {
+            inputField.value = "" + i + s;
+        }
+    }
+
+    function calculate() {
+        var i = document.getElementById('inputField').value;
+        if (!i == "") {
+            var c = eval(i);
+            inputField.value = c;
+        }
+
+    }
+
+    function clearData() {
+        inputField.value = "";
+    }
+    </script>
+</body>
+
+</html>
